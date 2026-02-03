@@ -1,6 +1,7 @@
 package com.zeta;
 
 public class Bank extends Account{
+
     public Bank(int number) {
         super(number);
     }
@@ -16,6 +17,8 @@ public class Bank extends Account{
     }
     Account acc1 = new CurrentAccount(123);
     Account acc2 = new SavingsAccount(423);
-    public boolean TranserMethod
+    public void TransferMethod(Account a1, Account a2){
+        
+    }
 
 }

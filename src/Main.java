@@ -1,7 +1,4 @@
-import com.zeta.ACCOUNT_TYPE;
-import com.zeta.Account;
-import com.zeta.CurrentAccount;
-import com.zeta.SavingsAccount;
+import com.zeta.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +11,8 @@ public class Main {
         List<Object> accounts = new ArrayList<>();
         accounts.add(account);
         accounts.add(current);
+        Bank b1 = new Bank(345);
+        b1.TransferMethod(account,current);
 
     }
 }
