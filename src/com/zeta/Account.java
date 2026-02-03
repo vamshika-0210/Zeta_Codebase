@@ -10,8 +10,9 @@ public abstract class Account {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public float setBalance(float balance) {
         this.balance = balance;
+        return balance;
     }
 
     public int getNumber() {

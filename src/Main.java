@@ -11,8 +11,13 @@ public class Main {
         List<Object> accounts = new ArrayList<>();
         accounts.add(account);
         accounts.add(current);
-        Bank b1 = new Bank(345);
-        b1.TransferMethod(account,current);
+        account.deposit(5000);
+        current.deposit(5000);
+        Bank b1 = new Bank(123);
+        b1.transfer(account,current,2000);
+        System.out.println("savings account:"+account.getBalance());
+        System.out.println("current account:"+current.getBalance());
+
 
     }
 }
