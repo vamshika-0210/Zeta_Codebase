@@ -1,6 +1,6 @@
 package com.zeta;
 
-public class Account {
+public class BankSetup {
     private float balance;
 
     public float getBalance() {
@@ -9,7 +9,7 @@ public class Account {
     public synchronized void setBalance(float balance) {
         this.balance = balance;
     }
-    public Account(float balance){
+    public BankSetup(float balance){
         this.balance = balance;
     }
     public synchronized boolean withdraw(float amount){

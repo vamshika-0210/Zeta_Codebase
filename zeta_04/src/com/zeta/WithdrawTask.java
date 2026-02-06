@@ -1,10 +1,10 @@
 package com.zeta;
 
 public class WithdrawTask extends Thread{
-    public Account account;
+    public BankSetup account;
     public float amount;
 
-    public WithdrawTask(Account account, float amount){
+    public WithdrawTask(BankSetup account, float amount){
         this.account = account;
         this.amount = amount;
     }

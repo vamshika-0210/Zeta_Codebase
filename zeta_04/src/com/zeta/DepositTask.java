@@ -1,9 +1,9 @@
 package com.zeta;
 
 public class DepositTask extends Thread{
-    public Account account;
+    public BankSetup account;
     public float amount;
-    public DepositTask(Account account, float amount){
+    public DepositTask(BankSetup account, float amount){
         this.account = account;
         this.amount = amount;
     }
