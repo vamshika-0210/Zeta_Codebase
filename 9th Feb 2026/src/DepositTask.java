@@ -1,10 +1,9 @@
-package com.zeta;
 import java.util.concurrent.Callable;
 
-public class DepositTask implements Callable{
-    public BankSetup account;
+public class DepositTask implements Callable {
+    public BankAccount account;
     public float amount;
-    public DepositTask(BankSetup account, float amount){
+    public DepositTask(BankAccount account, float amount){
         this.account = account;
         this.amount = amount;
     }

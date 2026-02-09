@@ -1,10 +1,9 @@
 package com.zeta;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
+import java.util.concurrent.*;
 import java.util.Scanner;
-  public class Main{
+
+public class Main{
     public static void main(String[] args) {
 
         int choice;
@@ -42,8 +41,15 @@ import java.util.Scanner;
                 } catch (Exception e) {
                     System.out.println("Amount is negative!");
                 }
-                executor.submit(new DepositTask(account1,depositAmount));
-                break;
+                Future future = executor.submit(new DepositTask(account1,depositAmount));
+                try {
+                    System.out.println(future.get(10,TimeUnit.SECONDS));
+                } catch (RuntimeException | TimeoutException | InterruptedException e){
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
+                    break;
                 case 3: System.out.println("Enter amount to Withdraw");
                 float withdrawAmount = sc.nextInt();
                     try {

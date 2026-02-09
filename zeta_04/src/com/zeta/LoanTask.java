@@ -1,7 +1,7 @@
 package com.zeta;
 
 public class LoanTask extends Thread{
-    Loan loan;
+    Loan loan = new Loan();
     int interestRate;
     public BankSetup account;
     public float loanAmount;
