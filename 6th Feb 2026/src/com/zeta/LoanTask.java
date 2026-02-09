@@ -15,12 +15,12 @@ public class LoanTask extends Thread{
     public void run(){
         String Thread = getName();
         System.out.println("Loan handled by thread: "+Thread);
-        boolean success = loan.checkLoanAmount(loanAmount);
+        boolean success = loan.checkLoanAmount.apply(loanAmount);
         System.out.println("success  "+success);
         if (!success){
             System.out.println("loan amount not valid");
         }
-        boolean success1 = loan.checkTenure(tenure);
+        boolean success1 = loan.checkTenure.apply(tenure);
         if (!success1) {
             System.out.println("Loan tenure not valid");
         }

@@ -2,6 +2,7 @@ package com.zeta;
 
 import java.util.concurrent.*;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class Main{
     public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class Main{
             choice = sc.nextInt();
 
             switch (choice){
-                case 1: System.out.println("Balance: "+account1.getBalance());
+                case 1: System.out.println("Balance: "+account1.getBalance.get());
                 break;
                 case 2: System.out.println("Enter amount to Deposit");
                 float depositAmount = sc.nextInt();
@@ -41,7 +42,8 @@ public class Main{
                 } catch (Exception e) {
                     System.out.println("Amount is negative!");
                 }
-                Future future = executor.submit(new DepositTask(account1,depositAmount));
+                Future future = executor.submit(() -> new DepositTask(account1,depositAmount));
+
                 try {
                     System.out.println(future.get(10,TimeUnit.SECONDS));
                 } catch (RuntimeException | TimeoutException | InterruptedException e){
@@ -59,24 +61,25 @@ public class Main{
                     } catch (Exception e) {
                         System.out.println("Amount is negative!");
                     }
-                executor.submit(new WithdrawTask(account1,withdrawAmount));
+
+                executor.submit(()->new WithdrawTask(account1,withdrawAmount));
                 break;
                 case 4: System.out.println("Withdrawal parallel! Enter the withdrawal amount: " );
                 float withdrawAmount1 = sc.nextInt();
                 float withdrawAmount2 = sc.nextInt();
                 float withdrawAmount3 = sc.nextInt();
-                executor.submit(new WithdrawTask(account1,withdrawAmount1));
-                executor.submit(new WithdrawTask(account1,withdrawAmount2));
+                executor.submit(()-> new WithdrawTask(account1,withdrawAmount1));
+                executor.submit(()-> new WithdrawTask(account1,withdrawAmount2));
                 //executor.submit(new WithdrawTask(account1,withdrawAmount3));
                 break;
                 case 5: System.out.println("Applying for a loan");
-                if (account1.getBalance()>10000){
+                if (account1.getBalance.get()>10000){
                     System.out.println("Enter loan amount");
                     float loanAmount = sc.nextInt();
                     System.out.println("Enter tenure");
                     int tenure = sc.nextInt();
                     //LoanTask loanTask = new LoanTask(account1, loanAmount, tenure);
-                    executor.submit(new LoanTask(account1, loanAmount, tenure));
+                    executor.submit(()->new LoanTask(account1, loanAmount, tenure));
                 } else {
                     System.out.println("Balance amount not sufficient to provide loan.");
                 }

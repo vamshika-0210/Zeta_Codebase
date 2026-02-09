@@ -13,10 +13,10 @@ public class DepositTask implements Callable{
         String thread = Thread.currentThread().getName();
         System.out.println("Thread "+thread+" trying to deposit money of "+amount);
         try{
-            account.deposit(amount);
+            account.deposit.apply((int)amount);
         } catch (RuntimeException e) {
             System.out.println("Deposit was unsuccessful." + e);
         }
-        return account.getBalance();
+        return account.getBalance.get();
     }
 }

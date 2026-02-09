@@ -1,3 +1,4 @@
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 class Util {
@@ -12,5 +13,9 @@ class Util {
 public class MethodReference {
     public static void main(String[] args){
         Util util = new Util();
+        Function<Integer,Integer> reference = util::square;
+        System.out.println(reference.apply(2));
+        BiFunction<Integer,Integer,Integer> reference2 = Util::sum;
+        System.out.println(reference2.apply(2,2));
     }
 }

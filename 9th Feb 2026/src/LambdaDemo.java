@@ -41,9 +41,9 @@ public class LambdaDemo {
         assignment3.twoParameter(numbers, 5);
         ArrayIncrement assignment4 = (arr) -> {
             for(int i=0;i<arr.length;i+=3){
-                sum +=  arr[i];
+                //sum +=  arr[i];
             }
-            return sum;
+            return arr;
         };
 
 

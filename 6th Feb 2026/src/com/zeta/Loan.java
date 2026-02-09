@@ -1,20 +1,27 @@
 package com.zeta;
 
+import java.util.function.Function;
+
 public class Loan {
     //float loanAmount;
     int interestRate;
     int MonthlyInterestRate;
 
+
     Loan(){
         this.interestRate=12;
         this.MonthlyInterestRate = 12/(12*100);
     }
-    public synchronized boolean checkLoanAmount(float loanAmount){
-        return loanAmount < 1000000;
-    }
-    public synchronized boolean checkTenure(int tenure){
-        return tenure < 36;
-    }
+
+    Function<Float,Boolean> checkLoanAmount = loanAmount -> loanAmount < 1000000;
+    //public synchronized boolean checkLoanAmount(float loanAmount){
+        //return loanAmount < 1000000;
+    //}
+
+    Function<Integer, Boolean> checkTenure = tenure -> tenure<36;
+    //public synchronized boolean checkTenure(int tenure){
+        //return tenure < 36;
+    //}
 
     public synchronized float calculateLoanAmount(float loanAmount, int interestRate, int tenure){
         float monthlyPayable;
